@@ -1,0 +1,35 @@
+{
+  "name": "webpack-2_boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build-prod":"node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config-prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shekharknvs/webpack-2_boilerplate.git"
+  },
+  "keywords": [
+    "webpack@2",
+    "boilerplate",
+    "Shekhar"
+  ],
+  "author": "Shekhar K N V S",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shekharknvs/webpack-2_boilerplate/issues"
+  },
+  "homepage": "https://github.com/shekharknvs/webpack-2_boilerplate#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2017": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "compression-webpack-plugin": "^0.4.0",
+    "webpack": "^2.3.3",
+    "webpack-dev-server": "^2.4.2"
+  }
+}
