@@ -9,7 +9,7 @@ module.exports = {
     cache:false,
     context: path.resolve(__dirname, './src'),
     entry:{
-        app:'./app.js'
+        app:['./app.js','webpack-dev-server/client?http://localhost:8080','webpack/hot/only-dev-server']
     },
     output:{
         path:__dirname,
@@ -32,21 +32,18 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
-                drop_console: false,
+                drop_console: false
             }
         }),
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": '"development"'
         }),
-        // new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin()
     ],
     devServer:{
         contentBase: path.resolve(__dirname),
-        public:"shekhar",
-        // compress:true,
         historyApiFallback: true,
-        // hot:true,
-        //lazy:true,
+        hot:true,
         port:8080
     }
 };

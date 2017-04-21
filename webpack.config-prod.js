@@ -3,11 +3,8 @@ const webpack = require('webpack');
 var CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
-    devtool:'eval',
+    devtool:'source-map',
     target:'web',
-    watch:true,
-    stats:"verbose",
-    cache:false,
     context: path.resolve(__dirname, './src'),
     entry:{
         app:'./app.js'
@@ -30,18 +27,21 @@ module.exports = {
         extensions:[".js",".json"]
     },
     plugins:[
+
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false,
                 drop_console: false
             }
         }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     filename: "app.[hash].js",
-        //     minChunks:2
-        // }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name:"common",
+            filename: "common.[id].js",
+            minChunks:1
+        }),
         new CompressionPlugin({
-            asset: "bundle.gz[query]",
+            asset: "bundle.js.gz[query]",
             algorithm: "gzip",
             test: /\.(js|html)$/,
             threshold: 10240,
@@ -51,11 +51,9 @@ module.exports = {
             "process.env.NODE_ENV": '"production"'
         })
     ],
-    devServer:{
-        contentBase: path.resolve(__dirname),
-        public:"Shekhar",
-        compress:true,
-        historyApiFallback: true,
-        port:8080
-    }
+    // devServer:{
+    //     contentBase: path.resolve(__dirname),
+    //     historyApiFallback: true,
+    //     port:8080
+    // }
 };
