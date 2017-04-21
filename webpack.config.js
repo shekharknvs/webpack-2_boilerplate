@@ -45,5 +45,8 @@ module.exports = {
         historyApiFallback: true,
         hot:true,
         port:8080
+    },
+    performance:{
+        hints:"warning"
     }
 };

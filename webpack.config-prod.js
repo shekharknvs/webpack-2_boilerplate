@@ -3,7 +3,7 @@ const webpack = require('webpack');
 var CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
-    devtool:'source-map',
+    devtool:'cheap-source-map',
     target:'web',
     context: path.resolve(__dirname, './src'),
     entry:{
